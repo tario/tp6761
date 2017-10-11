@@ -6,12 +6,134 @@
 <script src="lib/ui-bootstrap-tpls-0.12.1.min.js"></script>
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+<style>
+.input-cell input {
+  width: 100%;
+}
+</style>
+
 </head>
 <body>
 
 <div ng-app="VisionCalculator">
     <div ng-controller="MainController">
-        <h3>{{title}}</h3>
+        <h2>{{title}}</h2>
+
+        <div class="container">
+          <div class="row">
+            <h3>Parametros del punto</h3>
+            <div class="col-md-1">
+              <label>Preset:</label>
+            </div>
+            <div class="col-md-6">
+              <select ng-options="preset as preset.name for preset in presets track by preset.id" ng-model="selectedPreset" ng-change="setPreset()">
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-1">
+              <label>MQ</label>
+            </div>
+            <div class="col-md-2 input-cell">
+              <input ng-model="mq[0]" type="number"/>
+              <input ng-model="mq[1]" type="number"/>
+              <input ng-model="mq[2]" type="number"/>
+            </div>
+
+            <div class="col-md-1">
+              <label>MD</label>
+            </div>
+            <div class="col-md-2 input-cell">
+              <input ng-model="md[0]" type="number"/>
+              <input ng-model="md[1]" type="number"/>
+            </div>
+
+
+            <div class="col-md-1">
+              <label>MI</label>
+            </div>
+            <div class="col-md-2 input-cell">
+              <input ng-model="mi[0]" type="number"/>
+              <input ng-model="mi[1]" type="number"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <h3>Parametros de los ojos</h3>
+
+            <div class="col-md-1">
+              <label>S1</label>
+            </div>
+            <div class="col-md-3 input-cell">
+              <input ng-model="s1[0]" type="number"/>
+              <input ng-model="s1[1]" type="number"/>
+              <input ng-model="s1[2]" type="number"/>
+            </div>
+
+            <div class="col-md-1">
+              <label>S2</label>
+            </div>
+            <div class="col-md-3 input-cell">
+              <input ng-model="s2[0]" type="number"/>
+              <input ng-model="s2[1]" type="number"/>
+              <input ng-model="s2[2]" type="number"/>
+            </div>
+
+            <div class="col-md-1">
+              <label>P</label>
+            </div>
+            <div class="col-md-2 input-cell">
+              <input ng-model="p" type="number"/>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-1">
+              <label>M1</label>
+            </div>
+            <div class="col-md-1 input-cell">
+              <input ng-model="m1[0][0]" type="number"/>
+              <input ng-model="m1[1][0]" type="number"/>
+              <input ng-model="m1[2][0]" type="number"/>
+            </div>
+            <div class="col-md-1 input-cell">
+              <input ng-model="m1[0][1]" type="number"/>
+              <input ng-model="m1[1][1]" type="number"/>
+              <input ng-model="m1[2][1]" type="number"/>
+            </div>
+            <div class="col-md-1 input-cell">
+              <input ng-model="m1[0][2]" type="number"/>
+              <input ng-model="m1[1][2]" type="number"/>
+              <input ng-model="m1[2][2]" type="number"/>
+            </div>
+
+            <div class="col-md-1">
+              <label>M2</label>
+            </div>
+            <div class="col-md-1 input-cell">
+              <input ng-model="m2[0][0]" type="number"/>
+              <input ng-model="m2[1][0]" type="number"/>
+              <input ng-model="m2[2][0]" type="number"/>
+            </div>            
+            <div class="col-md-1 input-cell">
+              <input ng-model="m2[0][1]" type="number"/>
+              <input ng-model="m2[1][1]" type="number"/>
+              <input ng-model="m2[2][1]" type="number"/>
+            </div>            
+            <div class="col-md-1 input-cell">
+              <input ng-model="m2[0][2]" type="number"/>
+              <input ng-model="m2[1][2]" type="number"/>
+              <input ng-model="m2[2][2]" type="number"/>
+            </div>            
+          </div>
+        </div>
     </div>
 </div>
 
