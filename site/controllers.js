@@ -1,5 +1,5 @@
 var app = angular.module("VisionCalculator");
-app.controller("MainController", ["$scope", function($scope) {
+app.controller("MainController", ["$scope", "RotationCalculator", function($scope, RotationCalculator) {
   $scope.title = "Vision Calculator";
 
   $scope.s1 = [0, 0, 0];
@@ -45,13 +45,36 @@ app.controller("MainController", ["$scope", function($scope) {
     md: [2.193770028, 0.3243603722]
   }];
 
-  $scope.selectedPreset = $scope.presets[0];
+  var updateRotationMatrix = function() {
+    $scope.m1 = RotationCalculator.getRotation({
+      Mq: $scope.mq,
+      m: $scope.md,
+      s: $scope.s1,
+      p: $scope.p
+    });
 
+    $scope.m2 = RotationCalculator.getRotation({
+      Mq: $scope.mq,
+      m: $scope.mi,
+      s: $scope.s2,
+      p: $scope.p
+    });
+  };
+
+  $scope.selectedPreset = $scope.presets[0];
   $scope.setPreset = function() {
     $scope.mq = $scope.selectedPreset.mq;
     $scope.md = $scope.selectedPreset.md;
     $scope.mi = $scope.selectedPreset.mi;
+
+    updateRotationMatrix();
   };
 
   $scope.setPreset();
+
+  $scope.$watch("mq", updateRotationMatrix, true);
+  $scope.$watch("md", updateRotationMatrix, true);
+  $scope.$watch("mi", updateRotationMatrix, true);
+  $scope.$watch("s1", updateRotationMatrix, true);
+  $scope.$watch("s2", updateRotationMatrix, true);
 }])
