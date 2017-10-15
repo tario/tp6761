@@ -6,7 +6,7 @@ describe("Normalize", function() {
     };
   };
 
-  var expectEqual = expectPrecision(0.01);
+  var expectEqual = expectPrecision(0.0001);
 
   var testNorma = function(vector, norma) {
     describe("when vector is " + vector, function() {
