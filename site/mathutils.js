@@ -28,10 +28,22 @@ var vect_product = function(v0, v1) {
     v0[0]*v1[1] - v0[1]*v1[0]];
 };
 
+var vect_sine = function(v0, v1) {
+  return norma(vect_product(v0, v1)) / norma(v0) / norma(v1);
+};
+
+
+var vect_cosine = function(v0, v1) {
+  return product(v0, v1) / norma(v0) / norma(v1);
+};
+
 MathUtils.norma = norma;
 MathUtils.normalize = normalize;
 MathUtils.product = product;
 MathUtils.vect_product = vect_product;
+
+MathUtils.vect_cosine = vect_cosine;
+MathUtils.vect_sine = vect_sine;
 
 window.MathUtils = MathUtils;
 
