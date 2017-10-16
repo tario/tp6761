@@ -16,14 +16,25 @@ describe("Matrix Product", function() {
       });
 
       [0,1,2].forEach(function(x) {
-        [0,1,2].forEach(function(y) {
-          describe("position " + x + " " + y, function() {
-            var expectedCellValue = expected[x][y];
-            it("should be " + expectedCellValue, function() {
-              expectEqual(this.product[x][y], expectedCellValue);
+
+        if (Array.isArray(expected[x])) {
+          [0,1,2].forEach(function(y) {
+            describe("position " + x + " " + y, function() {
+              var expectedCellValue = expected[x][y];
+              it("should be " + expectedCellValue, function() {
+                expectEqual(this.product[x][y], expectedCellValue);
+              });
             });
           });
-        });
+        } else {
+          describe("position " + x, function() {
+            var expectedCellValue = expected[x];
+            it("should be " + expectedCellValue, function() {
+              expectEqual(this.product[x], expectedCellValue);
+            });
+          });
+        }
+
       });
     });
   };
@@ -41,5 +52,11 @@ describe("Matrix Product", function() {
 
   testProduct(m0,identity,m0);
   testProduct(m0,identityx3,m0x3);
+
+  testProduct(identity, [1,0,0], [1,0,0]);
+  testProduct(identity, [0,1,0], [0,1,0]);
+
+  testProduct(m0, [1,1,0], [3.9,2,4]);
+  testProduct(m0, [0,1,1], [3,1,6]);
 
 });

@@ -61,8 +61,9 @@ app.controller("MainController", ["$scope", "RotationCalculator", function($scop
     });
   };
 
-  $scope.selectedPreset = $scope.presets[0];
+  $scope.selectedPresetIndex = 0;
   $scope.setPreset = function() {
+    $scope.selectedPreset = $scope.presets[$scope.selectedPresetIndex];
     $scope.mq = $scope.selectedPreset.mq;
     $scope.md = $scope.selectedPreset.md;
     $scope.mi = $scope.selectedPreset.mi;

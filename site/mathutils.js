@@ -58,13 +58,21 @@ var mat_transpose = function(m) {
 
 var mat_product = function(m0, v1) {
   if (Array.isArray(v1)) {
-    var p = product;
-    var v1t = mat_transpose(v1);
-    return [
-      [product(m0[0],v1[0]), product(m0[0],v1[1]), product(m0[0],v1[2])],
-      [product(m0[1],v1[0]), product(m0[1],v1[1]), product(m0[1],v1[2])],
-      [product(m0[2],v1[0]), product(m0[2],v1[1]), product(m0[2],v1[2])]
-    ];
+    if (Array.isArray(v1[0])) {
+      var p = product;
+      var v1t = mat_transpose(v1);
+      return [
+        [product(m0[0],v1[0]), product(m0[0],v1[1]), product(m0[0],v1[2])],
+        [product(m0[1],v1[0]), product(m0[1],v1[1]), product(m0[1],v1[2])],
+        [product(m0[2],v1[0]), product(m0[2],v1[1]), product(m0[2],v1[2])]
+      ];
+    } else {
+      return [
+        product(m0[0], v1),
+        product(m0[1], v1),
+        product(m0[2], v1)
+      ];
+    }
   } else {
     return [
       [m0[0][0]*v1,m0[0][1]*v1,m0[0][2]*v1],
@@ -93,6 +101,18 @@ var orodrigues = function(axis, sin, cos) {
   return mat_add(mat_add(term1, term2), term3);
 };
 
+// calculo de matriz de rotation a partir de vectores origen y destino
+// usando el metodo de Olinde Rodrigues
+var orodrigues_rotation = function(v0, v1) {
+  var axis = normalize(vect_product(v0, v1));
+  var sin = vect_sine(v0, v1);
+  var cos = vect_cosine(v0, v1);
+
+  return orodrigues(axis, sin, cos);
+};
+
+
+
 MathUtils.norma = norma;
 MathUtils.normalize = normalize;
 MathUtils.product = product;
@@ -104,6 +124,7 @@ MathUtils.vect_sine = vect_sine;
 MathUtils.mat_product = mat_product;
 
 MathUtils.orodrigues = orodrigues;
+MathUtils.orodrigues_rotation = orodrigues_rotation;
 
 // no testeado
 MathUtils.vect_add = vect_add;

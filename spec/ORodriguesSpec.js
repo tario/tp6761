@@ -85,4 +85,41 @@ describe("Olinde Rodrigues", function() {
   // por lo que no se probaran angulos mas grandes
 
 
+
+  var testORodriguesRotation = function(origin, destination) {
+    origin = MathUtils.normalize(origin);
+    destination = MathUtils.normalize(destination);
+
+    describe("when called orodrigues with origin=" + JSON.stringify(origin) + " v1=" + JSON.stringify(destination), function() {
+      beforeEach(function() {
+        this.product = MathUtils.orodrigues_rotation(origin, destination);
+        this.actual = MathUtils.mat_product(this.product, origin);
+      });
+
+      [0,1,2].forEach(function(x) {
+        describe("position " + x, function() {
+          var destinationCellValue = destination[x];
+          it("should be " + destinationCellValue, function() {
+            expectEqual(this.actual[x], destinationCellValue);
+          });
+        });
+      });
+    });
+  };
+
+  testORodriguesRotation([30, 10, -30], [0.943584990553998, 0.349130937870532, -1]);
+  testORodriguesRotation([80, 10, -30], [2.97395486662125, 0.308952523348582, -1]);
+
+  testORodriguesRotation([-30, 10, -30], [-1.058854467, 0.3161805526, -1]);
+  testORodriguesRotation([20, 10, -30], [0.729240437391748, 0.3532833266, -1]);
+
+  testORodriguesRotation([30, -10, -30], [0.9594567146, -0.3014801111, -1]);
+  testORodriguesRotation([80, -10, -30], [2.88722679, -0.4140686058, -1]);
+
+  testORodriguesRotation([-30, -10, -30], [-1.041762415, -0.3673540994, -1]);
+  testORodriguesRotation([20, -10, -30], [0.694119083, -0.3271627534, -1]);
+
+  testORodriguesRotation([10, 10, -30], [0.2978972254, 0.338506067, -1]);
+  testORodriguesRotation([60, 10, -30], [2.193770028, 0.3243603722, -1]);
+
 });
