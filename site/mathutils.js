@@ -73,6 +73,26 @@ var mat_product = function(m0, v1) {
   }
 };
 
+// Aplicacion de la formula de Olinde Rodrigues
+// Dado un eje (versor), el seno del angulo y el coseno
+var orodrigues = function(axis, sin, cos) {
+  // I + A sin + A A ( 1 - cos)
+  var term1, term2, term3;
+
+  // el axiador
+  var A = [
+    [0       , -axis[2],  axis[1]],
+    [axis[2] , 0       , -axis[0]],
+    [-axis[1], axis[0] , 0]
+  ];
+
+  term1 = [[1,0,0], [0,1,0], [0,0,1]];
+  term2 = mat_product(A, sin);
+  term3 = mat_product(mat_product(A, A), 1 - cos);
+
+  return mat_add(mat_add(term1, term2), term3);
+};
+
 MathUtils.norma = norma;
 MathUtils.normalize = normalize;
 MathUtils.product = product;
@@ -83,9 +103,12 @@ MathUtils.vect_sine = vect_sine;
 
 MathUtils.mat_product = mat_product;
 
+MathUtils.orodrigues = orodrigues;
+
 // no testeado
 MathUtils.vect_add = vect_add;
 MathUtils.mat_add = mat_add;
+MathUtils.mat_transpose = mat_transpose;
 
 window.MathUtils = MathUtils;
 
