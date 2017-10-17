@@ -47,20 +47,20 @@
             </div>
 
             <div class="col-md-1">
-              <label>MD</label>
+              <label>M1</label>
             </div>
             <div class="col-md-2 input-cell">
-              <input ng-model="md[0]" type="number"/>
-              <input ng-model="md[1]" type="number"/>
+              <input ng-model="m1[0]" type="number"/>
+              <input ng-model="m1[1]" type="number"/>
             </div>
 
 
             <div class="col-md-1">
-              <label>MI</label>
+              <label>M2</label>
             </div>
             <div class="col-md-2 input-cell">
-              <input ng-model="mi[0]" type="number"/>
-              <input ng-model="mi[1]" type="number"/>
+              <input ng-model="m2[0]" type="number"/>
+              <input ng-model="m2[1]" type="number"/>
             </div>
           </div>
         </div>
@@ -99,47 +99,80 @@
         <div class="container">
           <div class="row">
             <div class="col-md-1">
-              <label>M1</label>
+              <label>Eje</label>
+            </div>
+            <div class="col-md-2 input-cell">
+              <input ng-model="axis1[0]" type="number" readonly/>
+              <input ng-model="axis1[1]" type="number" readonly/>
+              <input ng-model="axis1[2]" type="number" readonly/>
+            </div>
+            <div class="col-md-1">
+              <label>Angulo (Radianes)</label>
+            </div>
+            <div class="col-md-2">
+              <input ng-model="angle1" type="number" readonly/>
+            </div>
+
+            <div class="col-md-1">
+              <label>Eje</label>
+            </div>
+            <div class="col-md-2 input-cell">
+              <input ng-model="axis2[0]" type="number" readonly/>
+              <input ng-model="axis2[1]" type="number" readonly/>
+              <input ng-model="axis2[2]" type="number" readonly/>
+            </div>
+            <div class="col-md-1">
+              <label>Angulo (Radianes)</label>
+            </div>
+            <div class="col-md-2">
+              <input ng-model="angle2" type="number" readonly/>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-1">
+              <label>R1</label>
             </div>
             <div class="col-md-5">
               <div class="row">
                 <div class="col-md-4 input-cell">
-                  <input ng-model="m1[0][0]" type="number" readonly/>
-                  <input ng-model="m1[1][0]" type="number" readonly/>
-                  <input ng-model="m1[2][0]" type="number" readonly/>
+                  <input ng-model="R1[0][0]" type="number" readonly/>
+                  <input ng-model="R1[1][0]" type="number" readonly/>
+                  <input ng-model="R1[2][0]" type="number" readonly/>
                 </div>
                 <div class="col-md-4 input-cell">
-                  <input ng-model="m1[0][1]" type="number" readonly/>
-                  <input ng-model="m1[1][1]" type="number" readonly/>
-                  <input ng-model="m1[2][1]" type="number" readonly/>
+                  <input ng-model="R1[0][1]" type="number" readonly/>
+                  <input ng-model="R1[1][1]" type="number" readonly/>
+                  <input ng-model="R1[2][1]" type="number" readonly/>
                 </div>
                 <div class="col-md-4 input-cell">
-                  <input ng-model="m1[0][2]" type="number" readonly/>
-                  <input ng-model="m1[1][2]" type="number" readonly/>
-                  <input ng-model="m1[2][2]" type="number" readonly/>
+                  <input ng-model="R1[0][2]" type="number" readonly/>
+                  <input ng-model="R1[1][2]" type="number" readonly/>
+                  <input ng-model="R1[2][2]" type="number" readonly/>
                 </div>
               </div>
             </div>
 
             <div class="col-md-1">
-              <label>M2</label>
+              <label>R2</label>
             </div>
             <div class="col-md-5">
               <div class="row">
                 <div class="col-md-4 input-cell">
-                  <input ng-model="m2[0][0]" type="number" readonly/>
-                  <input ng-model="m2[1][0]" type="number" readonly/>
-                  <input ng-model="m2[2][0]" type="number" readonly/>
+                  <input ng-model="R2[0][0]" type="number" readonly/>
+                  <input ng-model="R2[1][0]" type="number" readonly/>
+                  <input ng-model="R2[2][0]" type="number" readonly/>
                 </div>            
                 <div class="col-md-4 input-cell">
-                  <input ng-model="m2[0][1]" type="number" readonly/>
-                  <input ng-model="m2[1][1]" type="number" readonly/>
-                  <input ng-model="m2[2][1]" type="number" readonly/>
+                  <input ng-model="R2[0][1]" type="number" readonly/>
+                  <input ng-model="R2[1][1]" type="number" readonly/>
+                  <input ng-model="R2[2][1]" type="number" readonly/>
                 </div>            
                 <div class="col-md-4 input-cell">
-                  <input ng-model="m2[0][2]" type="number" readonly/>
-                  <input ng-model="m2[1][2]" type="number" readonly/>
-                  <input ng-model="m2[2][2]" type="number" readonly/>
+                  <input ng-model="R2[0][2]" type="number" readonly/>
+                  <input ng-model="R2[1][2]" type="number" readonly/>
+                  <input ng-model="R2[2][2]" type="number" readonly/>
                 </div>            
               </div>
             </div>
