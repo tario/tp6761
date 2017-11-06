@@ -59,25 +59,24 @@ var mat_transpose = function(m) {
 var mat_product = function(m0, v1) {
   if (Array.isArray(v1)) {
     if (Array.isArray(v1[0])) {
-      var p = product;
       var v1t = mat_transpose(v1);
-      return [
-        [product(m0[0],v1[0]), product(m0[0],v1[1]), product(m0[0],v1[2])],
-        [product(m0[1],v1[0]), product(m0[1],v1[1]), product(m0[1],v1[2])],
-        [product(m0[2],v1[0]), product(m0[2],v1[1]), product(m0[2],v1[2])]
-      ];
+
+      return m0.map(function(l1) {
+        return v1t.map(function(l2) {
+          return product(l1, l2);
+        });
+      });
     } else {
-      return [
-        product(m0[0], v1),
-        product(m0[1], v1),
-        product(m0[2], v1)
-      ];
+      return m0.map(function(l) {
+        return product(l, v1);
+      });
     }
   } else {
-    return [
-      [m0[0][0]*v1,m0[0][1]*v1,m0[0][2]*v1],
-      [m0[1][0]*v1,m0[1][1]*v1,m0[1][2]*v1],
-      [m0[2][0]*v1,m0[2][1]*v1,m0[2][2]*v1]];
+    return m0.map(function(l) {
+      return l.map(function(x) {
+        return x*v1;
+      });
+    });
   }
 };
 
