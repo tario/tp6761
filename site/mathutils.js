@@ -56,6 +56,53 @@ var mat_transpose = function(m) {
   return ret;
 };
 
+var mat_solve = function(A, b) {
+  var d = mat_determinant(A);
+  return A[0].map(function(v, index) {
+    var Ar = A.map(function(row, i) {
+      return row.map(function(value, j) {
+        if (j===index) {
+          return b[i];
+        }
+
+        return value;
+      });
+    });
+
+    return mat_determinant(Ar) / d;
+  });
+};
+
+var mat_sub_mat = function(m0, i0, j0) {
+  var ret = [];
+
+  return m0.filter(function(v, index) {
+    return index !== i0;
+  }).map(function(v, index) {
+    return v.filter(function(v, index) {
+      return index !== j0;
+    });
+  });
+};
+
+var mat_determinant = function(m0) {
+  if (m0.length === 2) {
+    return m0[0][0] * m0[1][1] - m0[0][1] * m0[1][0];
+  } else {
+    var acc = 0;
+    var sign = 1;
+    for (var j=0; j<m0.length; j++) {
+      acc = acc + sign*m0[0][j] * mat_determinant(mat_sub_mat(m0, 0, j));
+
+      sign = -sign;
+    }
+
+    return acc;
+  }
+
+  return Math.pow(m0[0][0], m0.length);
+};
+
 var mat_product = function(m0, v1) {
   if (Array.isArray(v1)) {
     if (Array.isArray(v1[0])) {
@@ -121,9 +168,12 @@ MathUtils.vect_cosine = vect_cosine;
 MathUtils.vect_sine = vect_sine;
 
 MathUtils.mat_product = mat_product;
+MathUtils.mat_solve = mat_solve;
 
 MathUtils.orodrigues = orodrigues;
 MathUtils.orodrigues_rotation = orodrigues_rotation;
+
+MathUtils.mat_determinant = mat_determinant;
 
 // no testeado
 MathUtils.vect_add = vect_add;
