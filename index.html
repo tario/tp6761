@@ -25,33 +25,26 @@
 
         <div class="container">
           <div class="row">
-            <h3>Parametros del punto</h3>
-            <div class="col-md-1">
-              <label>Preset:</label>
-            </div>
-            <div class="col-md-6">
-              <select ng-model="selectedPresetIndex" ng-change="setPreset()">
-                <option ng-repeat="preset in presets" value="{{$index}}">{{preset.name}}</option>
-              </select>
-            </div>
+            <h3 class="col-md-10">Puntos de referencia</h3>
+            <button ng-click="addPoint()" class="pull-right btn btn-success">Agregar</button>
           </div>
 
-          <div class="row">
+          <div class="row" ng-repeat="point in points">
             <div class="col-md-1">
               <label>MQ</label>
             </div>
             <div class="col-md-2 input-cell">
-              <input ng-model="mq[0]" type="number"/>
-              <input ng-model="mq[1]" type="number"/>
-              <input ng-model="mq[2]" type="number"/>
+              <input ng-model="point.mq[0]" type="number"/>
+              <input ng-model="point.mq[1]" type="number"/>
+              <input ng-model="point.mq[2]" type="number"/>
             </div>
 
             <div class="col-md-1">
               <label>M1</label>
             </div>
             <div class="col-md-2 input-cell">
-              <input ng-model="m1[0]" type="number"/>
-              <input ng-model="m1[1]" type="number"/>
+              <input ng-model="point.m1[0]" type="number"/>
+              <input ng-model="point.m1[1]" type="number"/>
             </div>
 
 
@@ -59,15 +52,19 @@
               <label>M2</label>
             </div>
             <div class="col-md-2 input-cell">
-              <input ng-model="m2[0]" type="number"/>
-              <input ng-model="m2[1]" type="number"/>
+              <input ng-model="point.m2[0]" type="number"/>
+              <input ng-model="point.m2[1]" type="number"/>
             </div>
+
+            <button ng-click="removePoint(point)" class="pull-right btn btn-danger">
+              X
+            </button>
           </div>
         </div>
 
         <div class="container">
           <div class="row">
-            <h3>Parametros de los ojos</h3>
+            <h3>Parametros de las vistas</h3>
 
             <div class="col-md-1">
               <label>S1</label>
@@ -98,39 +95,8 @@
         <hr>
         <div class="container">
           <div class="row">
-            <div class="col-md-1">
-              <label>Eje</label>
-            </div>
-            <div class="col-md-2 input-cell">
-              <input ng-model="axis1[0]" type="number" readonly/>
-              <input ng-model="axis1[1]" type="number" readonly/>
-              <input ng-model="axis1[2]" type="number" readonly/>
-            </div>
-            <div class="col-md-1">
-              <label>Angulo (Radianes)</label>
-            </div>
-            <div class="col-md-2">
-              <input ng-model="angle1" type="number" readonly/>
-            </div>
+            <h3>Matrces de Rotacion de referenciales</h3>
 
-            <div class="col-md-1">
-              <label>Eje</label>
-            </div>
-            <div class="col-md-2 input-cell">
-              <input ng-model="axis2[0]" type="number" readonly/>
-              <input ng-model="axis2[1]" type="number" readonly/>
-              <input ng-model="axis2[2]" type="number" readonly/>
-            </div>
-            <div class="col-md-1">
-              <label>Angulo (Radianes)</label>
-            </div>
-            <div class="col-md-2">
-              <input ng-model="angle2" type="number" readonly/>
-            </div>
-          </div>
-        </div>
-        <div class="container">
-          <div class="row">
             <div class="col-md-1">
               <label>R1</label>
             </div>
