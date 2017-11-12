@@ -34,17 +34,17 @@
               <label>MQ</label>
             </div>
             <div class="col-md-2 input-cell">
-              <input ng-model="point.mq[0]" type="number"/>
-              <input ng-model="point.mq[1]" type="number"/>
-              <input ng-model="point.mq[2]" type="number"/>
+              <input ng-model="point.mq[0]" type="number" ng-model-options="{ debounce: 200 }" ng-change="updateRotationMatrix()"/>
+              <input ng-model="point.mq[1]" type="number" ng-model-options="{ debounce: 200 }" ng-change="updateRotationMatrix()"/>
+              <input ng-model="point.mq[2]" type="number" ng-model-options="{ debounce: 200 }" ng-change="updateRotationMatrix()"/>
             </div>
 
             <div class="col-md-1">
               <label>M1</label>
             </div>
             <div class="col-md-2 input-cell">
-              <input ng-model="point.m1[0]" type="number"/>
-              <input ng-model="point.m1[1]" type="number"/>
+              <input ng-model="point.m1[0]" type="number" ng-model-options="{ debounce: 200 }" ng-change="updateRotationMatrix()"/>
+              <input ng-model="point.m1[1]" type="number" ng-model-options="{ debounce: 200 }" ng-change="updateRotationMatrix()"/>
             </div>
 
 
@@ -52,11 +52,11 @@
               <label>M2</label>
             </div>
             <div class="col-md-2 input-cell">
-              <input ng-model="point.m2[0]" type="number"/>
-              <input ng-model="point.m2[1]" type="number"/>
+              <input ng-model="point.m2[0]" type="number" ng-model-options="{ debounce: 200 }" ng-change="updateRotationMatrix()"/>
+              <input ng-model="point.m2[1]" type="number" ng-model-options="{ debounce: 200 }" ng-change="updateRotationMatrix()"/>
             </div>
 
-            <button ng-click="removePoint(point)" class="pull-right btn btn-danger">
+            <button ng-show="points.length > 3" ng-click="removePoint(point)" class="pull-right btn btn-danger">
               X
             </button>
           </div>
@@ -70,18 +70,18 @@
               <label>S1</label>
             </div>
             <div class="col-md-5 input-cell">
-              <input ng-model="s1[0]" type="number"/>
-              <input ng-model="s1[1]" type="number"/>
-              <input ng-model="s1[2]" type="number"/>
+              <input ng-model="s1[0]" type="number" ng-model-options="{ debounce: 200 }" ng-change="updateRotationMatrix()"/>
+              <input ng-model="s1[1]" type="number" ng-model-options="{ debounce: 200 }" ng-change="updateRotationMatrix()"/>
+              <input ng-model="s1[2]" type="number" ng-model-options="{ debounce: 200 }" ng-change="updateRotationMatrix()"/>
             </div>
 
             <div class="col-md-1">
               <label>S2</label>
             </div>
             <div class="col-md-5 input-cell">
-              <input ng-model="s2[0]" type="number"/>
-              <input ng-model="s2[1]" type="number"/>
-              <input ng-model="s2[2]" type="number"/>
+              <input ng-model="s2[0]" type="number" ng-model-options="{ debounce: 200 }" ng-change="updateRotationMatrix()"/>
+              <input ng-model="s2[1]" type="number" ng-model-options="{ debounce: 200 }" ng-change="updateRotationMatrix()"/>
+              <input ng-model="s2[2]" type="number" ng-model-options="{ debounce: 200 }" ng-change="updateRotationMatrix()"/>
             </div>
 
 <!--            <div class="col-md-1">

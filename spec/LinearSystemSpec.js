@@ -1,4 +1,4 @@
-describe.only("Linear System", function() {
+describe("Linear System", function() {
   var expectPrecision = function(error) {
     return function(a, b) {
       expect(isNaN(a)).to.be(false);

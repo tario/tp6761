@@ -41,20 +41,43 @@ app.controller("MainController", ["$scope", "RotationCalculator", function($scop
   }];
 
   var updateRotationMatrix = function() {
-    // TODO: calcular el valor de las rotaciones usando cuadrados minimos
+    $scope.R1 = RotationCalculator.getRotation({
+      points: $scope.points.map(function(p) {
+        return {
+          mq: p.mq,
+          m: p.m1,
+          s: $scope.s1
+        };
+      })
+    });
+
+    $scope.R2 = RotationCalculator.getRotation({
+      points: $scope.points.map(function(p) {
+        return {
+          mq: p.mq,
+          m: p.m2,
+          s: $scope.s2
+        };
+      })
+    });
   };
 
   $scope.removePoint = function(point) {
     $scope.points = $scope.points.filter(function(p) { return p !== point; });
+
+    updateRotationMatrix();
   };
 
   $scope.addPoint = function(point) {
     $scope.points.push({
       mq: [0,0,0],
       m1: [0,0],
-      m2: [0,0]
+      m2: [0,0],
+      s1: $scope.s1,
+      s2: $scope.s2
     });
   };
 
-  $scope.$watch("points", updateRotationMatrix, true);
+  $scope.updateRotationMatrix = updateRotationMatrix;
+  updateRotationMatrix();
 }])

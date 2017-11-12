@@ -14,9 +14,16 @@ var normalize = function(v) {
   return [v[0] / n, v[1] / n, v[2] / n];
 };
 
+var sum = function(a, b) {
+  return a+b;
+};
+
 // producto interno entre vectores
 var product = function(v0, v1) {
-  return v0[0]*v1[0] + v0[1]*v1[1] + v0[2]*v1[2];
+  return v0.map(function(v0i, index) {
+    v1i = v1[index];
+    return v0i * v1i;
+  }).reduce(sum);
 };
 
 // producto vectorial entre vectores, calcula el vector
@@ -41,14 +48,20 @@ var vect_add = function(v0, v1) {
   return [v0[0]+v1[0], v0[1]+v1[1], v0[2]+v1[2]];  
 };
 
+var vect_sub = function(v0, v1) {
+  return [v0[0]-v1[0], v0[1]-v1[1], v0[2]-v1[2]];  
+};
+
 var mat_add = function(m0, m1) {
   return [vect_add(m0[0], m1[0]), vect_add(m0[1], m1[1]), vect_add(m0[2], m1[2])];
 };
 
+var zero = function(){ return 0; };
 var mat_transpose = function(m) {
-  var ret = [[0,0,0],[0,0,0],[0,0,0]];
-  [0,1,2].forEach(function(x) {
-    [0,1,2].forEach(function(y) {
+  var ret = m[0].map(function() { return m.map(zero); });
+
+  m[0].forEach(function(v1, x) {
+    m.forEach(function(v2, y) {
       ret[x][y] = m[y][x];
     });
   });
@@ -176,6 +189,7 @@ MathUtils.orodrigues_rotation = orodrigues_rotation;
 MathUtils.mat_determinant = mat_determinant;
 
 // no testeado
+MathUtils.vect_sub = vect_sub;
 MathUtils.vect_add = vect_add;
 MathUtils.mat_add = mat_add;
 MathUtils.mat_transpose = mat_transpose;
